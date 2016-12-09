@@ -17,9 +17,9 @@ clc
  pause(10);
 %% parameters to vary the effect %
 % 3ms max delay in seconds
-max_time_delay=0.005;
+max_time_delay=0.003;
 %rate of flange in Hz
-rate=1;                         
+rate=2;                         
 %create index array
 index=1:length(x_seg);
 
