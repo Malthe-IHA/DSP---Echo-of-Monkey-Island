@@ -1,0 +1,20 @@
+\newcommand{\tabupreamble}{
+	\toprule
+	\endfirsthead
+	\multicolumn{2}{l}{\scriptsize\itshape \ldots continued from previous page} \\
+	\toprule
+	\endhead
+	\multicolumn{2}{r}{\scriptsize\itshape continues on next page \ldots}
+	\endfoot
+	\bottomrule
+	\endlastfoot
+}
+
+% Rowcounter. Remeber to reset the row variable before use.
+\newcommand\rownumber{\stepcounter{magicrownumbers}\arabic{magicrownumbers}}
+
+% Reset the row counter.
+\newcommand{\resetrownumber}{\setcounter{magicrownumbers}{0}}
+
+% Setup the counter.
+\newcommand{\setuprownumber}{\newcounter{magicrownumbers}}

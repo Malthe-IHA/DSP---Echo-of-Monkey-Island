@@ -1,0 +1,15 @@
+# Adapted from answer on Stack Overflow: http://stackoverflow.com/a/987162/3365039
+
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!*.tex
+!*.lua
+!*.bib
+!makefile*
+!Makefile*
+
+# ...even if they are in subdirectories
+!*/
