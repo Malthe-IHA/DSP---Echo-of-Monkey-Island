@@ -50,7 +50,8 @@ y(i) = (amp*x_seg(i)) + amp*(x_seg(i-cur_delay));
 end
 
  %% Chorus of LeChuck 
+ comp = x_seg + y';
  
- soundsc(y,Fs);
+ soundsc(comp,Fs);
  
  
