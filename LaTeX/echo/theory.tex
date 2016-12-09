@@ -2,3 +2,26 @@
 
 \subsection{Theory and design}
 In order to generate an echo from a primary signal track, we merely need to superimpose the primary track on itself, with a slight delay. This process can be done digitally, using a FIR filter.
+
+The output if a FIR filter of order $N$ is determined by the previous $N + 1$ samples \fxnote{Dobbeltcheck order}.
+\begin{eqnarray}
+y[n] & = & b_{0} \cdot x[n] + b_{1} \cdot x[n - 1] + \dots + b_{N - 1} \cdot x[N] + b_{N} \cdot x[N + 1] \nonumber \\
+& = & \sum_{i = 0}^{N} b_{i} \cdot x[n - i]
+\end{eqnarray}
+From this, we could create a filter with a unit step delay, by letting it be a filter of order $N = 1$, with coefficients $b_{0} = 0$ and $b_{1} = 1$. The length of the unit delay is determined by the spacing between the samples $t_{s}$. This is directly related to the sample rate of the signal.
+\begin{eqnarray}
+t_{s} & = & \frac{1}{f_{s}}
+\end{eqnarray}
+Thus, the delay is dependent on the sample rate, and the same filter cannot be used on signals with different sample rates, without altering the effect, since the resulting time delay between the primary signal and the echo will vary.
+
+While a filter with a single unit delay may not be the most interesting filter, we can from this create any echo filter we wish. To move the delay, we simply have to add more unit delay steps. For a delay of two, we would have $b_{0} = 0, b_{1} = 0$ and $b_{2} = 1$. For a delay of three: $b_{0} = 0, b_{1} = 0, b_{2} = 0$ and $b_{3} = 1$.
+
+So, in general a delay of $n$ unit steps can be made by a FIR filter of order $M = n$, and the following coefficients.
+\begin{eqnarray}
+b_{i} & = & 0 \Forall i \in [0; n - 1] \nonumber \\
+b_{n} & = & 1
+\end{eqnarray}
+The corresponding delay in time is calculated from the sample rate as follows.
+\begin{eqnarray}
+t_{\textrm{delay}} & = & \frac{n}{f_{s}}
+\end{eqnarray}
