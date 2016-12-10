@@ -1,3 +1,21 @@
 % !TEX root = ../main.tex
 
 \subsection{Theory and design}
+To generate a chorus effect we need to achieve 3 things with regards to the primary signal:
+\begin{enumerate}
+	\item Vary the delay of the signal, to simulate multiple sources. Must not be perceived as an echo.
+	\item Alter the pitch of the signal, to emphasize the simulated multiple sources.
+	\item Optionally alter the amplitude of the generated sources.
+\end{enumerate}
+
+The final point of amplitude modulation can be trivially done in digital signal processing, and we will not discuss this part further.
+
+\subsubsection{Delay}
+The first point of creating a signal which is offset from the primary signal by a slight delay is exactly what we have been doing in the first part of this report: The \emph{echo} effect. However, now the delay need to be so small that we do not perceive the tracks to be echoes of the primary signal, but rather additional sources of sound in tune with the primary signal.
+
+\subsubsection{Pitch}
+The second part of creating the chorus effect is changing the pitch of the duplicated tracks. There are several ways we can do this. One is the "correct" way, the other yields the same result due to the way filtering works and we perceive sound.
+\begin{itemize}
+	\item Change the frequency spectrum of the signal.
+	\item Simulate changes by varying the delay.
+\end{itemize}

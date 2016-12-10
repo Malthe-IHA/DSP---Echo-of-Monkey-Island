@@ -9,7 +9,7 @@
 % The main document is handled in "document.tex".
 
 % This template requires compilation with LuaLaTeX, in order to enable the custom environments. Since minted is included by default, it is required to invoke the compilation with "-shell-escape".
-\documentclass[a4paper,oneside,openany,11pt,final,article]{memoir}
+\documentclass[a4paper,oneside,openany,11pt,draft,article]{memoir}
 
 % We want to globally be able to configure the draft option, however we risk option clashes since some package may load another package in the background, and we pass different options. This is the case with graphicx, so we do this to fix it.
 \PassOptionsToPackage{final}{graphicx}
