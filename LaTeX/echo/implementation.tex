@@ -32,24 +32,3 @@ audiowrite('echo.wav', y, Fs);
 \label{lst:echosample}
 \end{listing}
 
-With this, we can begin to experiment with the delay \emph{d}. We have taken a binary approach, starting from Fs and halving the delay each time. The results are shown in \cref{tbl:echo}.
-\begin{table}[!hbt]
-\centering
-\begin{tabular}{ccc}
-	\toprule
-	Units of delay & Time [ms] & Effect \\ 
-	\midrule
-	44100 & 1000 & Late echo \\ 
-	22050 & 500 & Late echo \\ 
-	11025 & 250 & Echo \\ 
-	5513 & 125 & Echo \\ 
-	2757 & 62.5 & Hard to distinguish tracks \\ 
-	1379 & 31.3 & Hard to distinguish tracks \\ 
-	690 & 15.6 & Impossible to distinguish tracks \\ 
-	173 & 3.9 & Impossible to distinguish tracks \\ 
-	\bottomrule
-\end{tabular}
-\caption{Effect of different delays for the echo effect, sample rate of \SI{44100}{\hertz}. Sample used is \cite{audiohello}.}
-\label{tbl:echo}
-\end{table}
-For the last samples, not only is it impossible to distinguish the tracks, the perceived pitch of the vocal track is also changed. For the cases where the delay is around \SI{50}{\milli\second}, we get the effect we wish to dive in to later: Chorus.
