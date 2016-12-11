@@ -19,3 +19,25 @@ The second part of creating the chorus effect is changing the pitch of the dupli
 	\item Change the frequency spectrum of the signal.
 	\item Simulate changes by varying the delay.
 \end{itemize}
+We will start by examining the conventional way of changing the pitch: Altering the frequency components of the signal.
+
+\paragraph{Frequency spectrum method}\mbox{}\\
+Given a digital signal $x$ of $n$ samples, we can go from the time domain, where the signal was captured, to the frequency domain by applying the Fourier Transform (FT) to the signal. Since $x$ is not a mathematical function, but a series of quantized values, we are not able to use the continuous definition of the Fourier Transform, but have to apply the Discrete Fourier Transform (DFT) instead.
+
+There are several ways to implement the DFT, however the naive way of summing the integrals in the FT results in a slow implementation that scales as $O(n^{2})$, where $n$ is the number of samples. The Fast Fourier Transform uses an alternative implementation, which let us do the calculations as $O(n \cdot \log(n))$ instead, which is significantly faster for large number of samples. \fxnote{Kunne skrive noget om $n$ her}
+
+We now have a method to go from time to frequency domain, which yields the amplitude at each frequency component. This allows us to manipulate the signal contents in a different manner. For instance, we can now take the pitch of the signal, and move it up or down by shifting the entire frequency spectrum up or down. Should we wish for a less heavy handed approach, we can identify just the part of the signal we wish to shift, and do it selectively instead of altering the entire spectrum.
+
+Once we are done with modifying the pitch, we can convert the frequency spectrum back into the time domain, using the Inverse Fourier Transform (IFT). As before, for quantized signals we need to use the discrete version (IDFT), and again optimized versions exist in the form of the FFT algorithm family (IFFT).
+
+To summarize the procedure:
+\begin{enumerate}
+	\item Quantize signal.
+	\item Transform from time domain to frequency domain.
+	\item Alter frequency components to get desired pitch response.
+	\item Transform back from frequency domain to time domain.
+	\item "De-quantize"/playback the signal.
+\end{enumerate}
+The biggest issue with this method is the need to work on blocks of signal at a time, since we cannot stream the signal through the DFT.
+
+\paragraph{Delay method}\mbox{}\\
