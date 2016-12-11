@@ -1,3 +1,53 @@
 % !TEX root = ../main.tex
 
 \subsection{Implementation}
+We can generate the desired echo response in two filter ways: Either we can create a new track for the filtered output, and add it back to the master track, or we can do both steps in a single filter.
+
+Since the second method is simpler, we have implemented this method. This results in a slight change of the coefficients from \cref{eqn:echocoeff}.
+\begin{equation}
+b_{0} = 1
+\end{equation}
+This creates a duplicate of the original track in our filtered output, so we do not have to do this manually. The resulting code for a simple script is the following:
+\begin{listing}
+\begin{minted}[linenos=true]{matlab}
+% Import the audio.
+[x, Fs] = audioread('hello.wav');  
+
+% The number of unit step delay.
+d = ceil(Fs / 1);
+
+% The strenght of the echo.
+alpha = 1;
+
+% Generate FIR filter.
+b = [1, zeros(1, d), alpha];
+
+% Apply the FIR filter.
+y = filter(b, 1, x);
+
+% Write the output.
+audiowrite('echo.wav', y, Fs);
+\end{minted}
+\end{listing}
+
+With this, we can begin to experiment with the delay \emph{d}. We have taken a binary approach, starting from Fs and halving the delay each time. The results are shown in \cref{tbl:echo}.
+\begin{table}[!hbt]
+\centering
+\begin{tabular}{ccc}
+	\toprule
+	Units of delay & Time [ms] & Effect \\ 
+	\midrule
+	44100 & 1000 & Late echo \\ 
+	22050 & 500 & Late echo \\ 
+	11025 & 250 & Echo \\ 
+	5513 & 125 & Echo \\ 
+	2757 & 62.5 & Hard to distinguish tracks \\ 
+	1379 & 31.3 & Hard to distinguish tracks \\ 
+	690 & 15.6 & Impossible to distinguish tracks \\ 
+	173 & 3.9 & Impossible to distinguish tracks \\ 
+	\bottomrule
+\end{tabular}
+\caption{Effect of different delays for the echo effect, sample rate of \SI{44100}{\hertz}.}
+\label{tbl:echo}
+\end{table}
+For the last samples, not only is it impossible to distinguish the tracks, the perceived pitch of the vocal track is also changed. For the cases where the delay is around \SI{50}{\milli\second}, we get the effect we wish to dive in to later: Chorus.
