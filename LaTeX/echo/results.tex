@@ -31,3 +31,23 @@ For delays larger than around \SI{100}{\milli\second} we get the effect we are l
 	\caption{Visualization of the echo effect on a track. Sample is from \cite{audiohello}. It can clearly be seen, how the echo joins the main track in time, as the echo delay is reduced.}
 	\label{fig:echohello}
 \end{figure}
+
+Looking at a complete music sample, instead of a simple "Hello", we turn to the theme from the classic video game Monkey Island. Applying a delay of half a second, with a gain of \num{0.65}, yields the following results in the time and frequency domain.
+
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[width=\textwidth]{EchoTime.pdf}
+	\caption{Excerpt of the theme from Monkey Island in the time domain, with and without a slight delay to induce an echo effect.}
+	\label{fig:echotime}
+\end{figure}
+
+\begin{figure}[!hbt]
+	\centering
+	\includegraphics[width=\textwidth]{EchoFreq.pdf}
+	\caption{Excerpt of the theme from Monkey Island in the frequency domain, with and without a slight delay to induce an echo effect.}
+	\label{fig:echofreq}
+\end{figure}
+
+In \cref{fig:echotime}, the results of the echo FIR filter is shown in the time domain. Since the delay is \SI{0.5}{\second}, it is not possible to see a large effect on the signal, except for the added amplitude due to the addition of a duplicate echo signal. Due to the oscillation frequency of the audio signal, it is difficult to shown a zoom, demonstrating the echo/delay effect.
+
+Likewise, in \cref{fig:echofreq}, the results of the FIR filter on the same sample is shown in the frequency domain. Since the FIR filter only changes amplitudes, we would expect the frequency components to be the same, but the amplitudes changed. This is also evident from the figure, where a slight gain can be observed due to the additional signal. Since the DFT does not tell anything about the timing of the signals, we cannot readily see the echo signal from this.
