@@ -10,7 +10,7 @@ clc
  
  
  [x,Fs] = audioread('LeChuck_Theme.mp3'); 
- 
+ Ts = 1/Fs;
  x_seg = x(Fs*10 : Fs*20);
  
  soundsc(x_seg,Fs);
@@ -49,9 +49,64 @@ cur_delay=ceil(cur_sin*max_samp_delay);
 y(i) = (amp*x_seg(i)) + amp*(x_seg(i-cur_delay));
 end
 
+%% Time domain plot of music without delay
+ T = 0:Ts:10
+
+ figure(3)
+ plot(T,x_seg)
+ title('Amplitude Spectrum')
+ axis tight
+ xlabel('Time/s')
+ ylabel('Amplitude')
+
+
  %% Chorus of LeChuck 
  comp = x_seg + y';
  
  soundsc(comp,Fs);
  
+ %% Fourier of music without chorus
+ 
+x_FFt = fft(x_seg);
+L = length(x_seg);
+
+x_FFt_real = abs(x_FFt);
+
+x_FFt_real_chan_1 = x_FFt_real(1,:);
+
+x_FFt_real_chan_1_norm = normr(x_FFt_real_chan_1);
+
+f = Fs*(0:(L-1))/L;
+
+figure(4)
+semilogx(f,x_FFt_real_chan_1_norm)
+title('Amplitude Spectrum')
+axis([10 20000 0 .1])
+xlabel('f (Hz)')
+ylabel('Normalized amplitude')
+ 
+%% Time domain plot of music wit delay 
+figure(5)
+plot(T,y)
+title('Amplitude Spectrum')
+xlabel('Time/s')
+ylabel('Amplitude')
+
+%% Fourier of music with delay
+
+y_FFt = fft(y);
+L = length(y);
+
+y_FFt_real = abs(y_FFt)';
+
+y_FFt_real_chan_1 = y_FFt_real(1,:);
+
+y_FFt_real_chan_1_norm = normr(y_FFt_real_chan_1);
+
+figure (6)
+semilogx(f,y_FFt_real_chan_1_norm)
+title('Amplitude Spectrum')
+axis([10 20000 0 0.1])
+xlabel('f (Hz)')
+ylabel('Normalized amplitude')
  

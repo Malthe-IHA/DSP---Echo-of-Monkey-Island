@@ -22,18 +22,27 @@ clf
 
  %% Echo of Monkey Island  
  soundsc(y,Fs); 
-
+ 
 
 %% Impluse response
 figure(1)
 impz(b,1,[],44100)
 
  
+%% Frequncy response of filter and delay
+figure(2)
+grpdelay(b,1)
+
+
+
 %% Time domain plot of music without delay
  T = 0:Ts:10
 
  figure(3)
  plot(T,x_seg)
+ title('Amplitude Spectrum')
+ xlabel('Time/s')
+ ylabel('Amplitude')
 
 
 %% Fourier of music without delay
@@ -58,6 +67,9 @@ ylabel('Normalized amplitude')
 %% Time domain plot of music wit delay 
 figure(5)
 plot(T,y)
+title('Amplitude Spectrum')
+xlabel('Time/s')
+ylabel('Amplitude')
 
 %% Fourier of music with delay
 
