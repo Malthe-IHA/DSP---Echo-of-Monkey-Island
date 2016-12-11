@@ -13,7 +13,8 @@ clf
  D = delay*Fs;  
  y = zeros(size(x_seg));  
  y(1:D) = x_seg(1:D);  
-   
+ 
+ 
    
  %%   FIR Filter Method.  
   b = [1,zeros(1,D),alpha];  % Creating coefficient for delay (22050 scalers of zero).
@@ -22,7 +23,8 @@ clf
 
  %% Echo of Monkey Island  
  soundsc(y,Fs); 
- 
+figure(7)
+freqz(b,1);
 
 %% Impluse response
 figure(1)
@@ -88,3 +90,4 @@ title('Amplitude Spectrum')
 axis([10 20000 0 .09])
 xlabel('f (Hz)')
 ylabel('Normalized amplitude')
+
