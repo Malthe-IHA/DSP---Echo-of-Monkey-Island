@@ -9,7 +9,7 @@ b_{0} = 1
 \end{equation}
 This creates a duplicate of the original track in our filtered output, so we do not have to do this manually. The resulting code for a simple script is the following:
 \begin{listing}
-\begin{minted}[linenos=true]{matlab}
+\begin{minted}[linenos,breaklines,stepnumber=5,frame=single]{matlab}
 % Import the audio.
 [x, Fs] = audioread('hello.wav');  
 
@@ -28,6 +28,8 @@ y = filter(b, 1, x);
 % Write the output.
 audiowrite('echo.wav', y, Fs);
 \end{minted}
+\caption{Simple MatLab script for experimenting with the audio delay. Intended for use with the sample from \cite{audiohello}.}
+\label{lst:echosample}
 \end{listing}
 
 With this, we can begin to experiment with the delay \emph{d}. We have taken a binary approach, starting from Fs and halving the delay each time. The results are shown in \cref{tbl:echo}.
@@ -47,7 +49,7 @@ With this, we can begin to experiment with the delay \emph{d}. We have taken a b
 	173 & 3.9 & Impossible to distinguish tracks \\ 
 	\bottomrule
 \end{tabular}
-\caption{Effect of different delays for the echo effect, sample rate of \SI{44100}{\hertz}.}
+\caption{Effect of different delays for the echo effect, sample rate of \SI{44100}{\hertz}. Sample used is \cite{audiohello}.}
 \label{tbl:echo}
 \end{table}
 For the last samples, not only is it impossible to distinguish the tracks, the perceived pitch of the vocal track is also changed. For the cases where the delay is around \SI{50}{\milli\second}, we get the effect we wish to dive in to later: Chorus.
