@@ -14,13 +14,15 @@ clf
  y = zeros(size(x_seg));  
  y(1:D) = x_seg(1:D);  
  
+
  
    
  %%   FIR Filter Method.  
   b = [1,zeros(1,D),alpha];  % Creating coefficient for delay (22050 scalers of zero).
   y = filter(b,1,x_seg);     % Filtering music sample with one 1 coefficient 22050 zero and one 0.65. 
   
-
+  test = zeros(1,200);
+  zplane([1 test 0.65])
  %% Echo of Monkey Island  
  soundsc(y,Fs); 
 figure(7)
