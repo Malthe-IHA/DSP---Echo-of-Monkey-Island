@@ -3,7 +3,7 @@
 \subsection{Theory and design}
 In order to generate an echo from a primary signal track, we merely need to superimpose the primary track on itself, with a slight delay. This process can be done digitally, using a FIR filter.
 
-The output if a FIR filter of order $N$ is determined by the previous $N + 1$ samples \fxnote{Dobbeltcheck order}.
+The output if a FIR filter of order $N$ is determined by the previous $N + 1$ samples.
 \begin{align}
 y[n] & = b_{0} \cdot x[n] + b_{1} \cdot x[n - 1] + \dots + b_{N - 1} \cdot x[N] + b_{N} \cdot x[N + 1] \nonumber \\
 & = \sum_{i = 0}^{N} b_{i} \cdot x[n - i]
