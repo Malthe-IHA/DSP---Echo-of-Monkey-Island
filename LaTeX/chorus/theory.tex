@@ -43,18 +43,18 @@ To summarize the procedure:
 The biggest issue with this method is the need to work on blocks of signal at a time, since we cannot stream the signal through the DFT.
 
 \paragraph{Delay method}\mbox{}\\
-\fxnote{The following is WRONG}
+%\fxnote{The following is WRONG}
 
-An alternative to the frequency domain method above, is to utilize the human perception of hearing. Instead of doing the transformation to frequency space, we employ a number of delay lines in the form of digital filters, quite similar in design and effect as the echo filters we described earlier.
+%An alternative to the frequency domain method above, is to utilize the human perception of hearing. Instead of doing the transformation to frequency space, we employ a number of delay lines in the form of digital filters, quite similar in design and effect as the echo filters we described earlier.
 
-This time, we utilize that the mixing effect of two sines. If we have two pure sine signals and play them on top of each other, we would get the following:
-\begin{equation}
-\sin(\omega_{A}) + \sin(\omega_{B}) = 2 \cdot \sin \left( \frac{\omega_{A} + \omega_{B}}{2} \right) \cdot \cos \left( \frac{\omega_{A} - \omega_{B}}{2} \right)
-\label{eqn:chorusbeat}
-\end{equation}
-Thus, we have a term that is proportional to the sum of the input frequencies, and one which is proportional to the difference. If the two frequencies are close, such that $\omega_{A} - \omega_{B}  = \omega_{\textrm{beat}} \ll 1$, we can rewrite it as
-\begin{equation}
-\sin(\omega_{A}) + \sin(\omega_{B}) = 2 \cdot \sin (\omega_{A}) \cdot \cos \left( \frac{\omega_{\textrm{beat}}}{2} \right)
-\label{eqn:chorusbeatsimple}
-\end{equation}
-We can simulate this effect using the delay lines available to us in a FIR filter. If we modulate the number of unit delays with the beat frequency $\omega_{\textrm{beat}}$
+%This time, we utilize that the mixing effect of two sines. If we have two pure sine signals and play them on top of each other, we would get the following:
+%\begin{equation}
+%\sin(\omega_{A}) + \sin(\omega_{B}) = 2 \cdot \sin \left( \frac{\omega_{A} + \omega_{B}}{2} \right) \cdot \cos \left( \frac{\omega_{A} - \omega_{B}}{2} \right)
+%\label{eqn:chorusbeat}
+%\end{equation}
+%Thus, we have a term that is proportional to the sum of the input frequencies, and one which is proportional to the difference. If the two frequencies are close, such that $\omega_{A} - \omega_{B}  = \omega_{\textrm{beat}} \ll 1$, we can rewrite it as
+%\begin{equation}
+%\sin(\omega_{A}) + \sin(\omega_{B}) = 2 \cdot \sin (\omega_{A}) \cdot \cos \left( \frac{\omega_{\textrm{beat}}}{2} \right)
+%\label{eqn:chorusbeatsimple}
+%\end{equation}
+%We can simulate this effect using the delay lines available to us in a FIR filter. If we modulate the number of unit delays with the beat frequency $\omega_{\textrm{beat}}$

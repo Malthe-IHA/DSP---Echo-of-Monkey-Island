@@ -3,6 +3,9 @@
 \subsection{Analysis of the filter}
 
 \subsubsection{Stability}
-A FIR filter is inherently stable, since it has a finite response to a step input. We can investigate this further, by looking at the poles and zeros of the filter transfer function in the $Z$ domain.
-since stability is describes if a given filter response ever goes below any given cutoff point. A FIR  goes to 0 after the length of the signal  plus the filter order no further investigation of the specific filters stability is warranted.
+A linear, time-invariant, digital filter can be expressed by a generic transfer function in the Z-domain. As shown in expression \cref{eqn:transfer} the FIR filter is simply a special case with a denominator of value one. In practise this means that FIR filter is inherently stable thus the denominator does not contain any poles.
 
+\begin{align}
+H(z)=\frac{b_0+b_1z^{-1}+b_2^{-2}+...b_Nz^{-N}}{1+a_1z^{-1}+a_2^{-2}+...a_Nz^{-M}} \xrightarrow[]{FIR}  \frac{b_0+b_1z^{-1}+b_2^{-2}+...b_Nz^{-N}}{1}
+\label{eqn:transfer}
+\end{align}
