@@ -25,6 +25,26 @@ For the last samples, not only is it impossible to distinguish the tracks, the p
 
 For delays larger than around \SI{100}{\milli\second} we get the effect we are looking for. If we increase the delay even further, the echo effect gets more pronounced. For short samples like the vocal hello track used here, the delay gets large enough to completely separate the two tracks. A visualization of the effects for the longer delays is shown in \cref{fig:echohello}.
 
+\begin{table}[!hbt]
+	\centering
+	\begin{tabular}{cc}
+		\toprule
+		Relative amplitude & Effect \\ 
+		\midrule
+		1 & Echo \\ 
+		0.5 & Echo \\ 
+		0.25 & Echo \\ 
+		0.125 & Slight echo \\ 
+		0.063 & No echo \\ 
+		0.031 & No echo \\ 
+		\bottomrule
+	\end{tabular}
+	\caption{Effect of different amplitudes for the echo effect, sample rate of \SI{44100}{\hertz}. Delay is \SI{125}{\milli\second}. Sample used is \cite{audiohello}.}
+	\label{tbl:echoamp}
+\end{table}
+
+In \cref{tbl:echoamp}, the effect of changing the amplitude/gain of the echo is investigated, for a fixed delay time, which was previously found to generate an echo. From this table, we see that the amplitude has to be decreased significantly, before we no longer perceive the duplicate signal as an echo of the first, but rather background noise. If we increase the delay for the last two rows, such that it is \SI{1}{\second} instead of \SI{250}{\milli\second}, we are still able to hear the signal, and again begin to hear it as an echo, although quite delayed. Any further decreases in the amplitude results in the signal getting lost in the background and inaudible.
+
 \begin{figure}[!hbt]
 	\centering
 	\includegraphics[width=\textwidth]{EchoHello.pdf}
