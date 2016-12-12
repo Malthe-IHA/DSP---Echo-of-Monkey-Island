@@ -78,7 +78,7 @@ x_FFt_real = abs(x_FFt);
 
 x_FFt_real_chan_1 = x_FFt_real(1,:);
 
-x_FFt_real_chan_1_norm = normr(x_FFt_real_chan_1);
+x_FFt_real_chan_1_norm = 20 * log10(x_FFt_real_chan_1);
 
 f = Fs*(0:(L-1))/L;
 
@@ -89,7 +89,7 @@ y_FFt_real = abs(y_FFt)';
 
 y_FFt_real_chan_1 = y_FFt_real(1,:);
 
-y_FFt_real_chan_1_norm = normr(y_FFt_real_chan_1);
+y_FFt_real_chan_1_norm = 20 * log10(y_FFt_real_chan_1);
 
 
 

@@ -3,12 +3,25 @@
 
 \section{Results}
 The first sound clip we tried to alter with the chorus effect, was the strumming of a chord on the guitar. This sound clip was specific selected because the chorus effect should be prominent on string instruments. 
-In \colorbox{red}{figure...},the result of the chorus effect in the time domain is shown. Since the delay is only \SI{30}{\milli\second} it is difficult to see any effect on the visualized data. Meanwhile by listening to the signal in audio format revivals a big difference. This is to be expected thus the small delays introduced by the chorus modulation gives rise to tiny frequency changes. These tiny varying frequency changes leads to a so call beat frequency effect which are easily detected by the ear.
+In \cref{fig:guitar_time}, the result of the chorus effect in the time domain is shown. Since the delay is only \SI{30}{\milli\second} it is difficult to see any effect on the visualized data. Meanwhile by listening to the signal in audio format revivals a big difference. This is to be expected thus the small delays introduced by the chorus modulation gives rise to tiny frequency changes. These tiny varying frequency changes leads to a so call beat frequency effect which are easily detected by the ear.
 
-With such small changes in frequency a more scattered frequency spectrum ought to be expected, which is also the case as shown in \colorbox{red}{figure}. The scattering occurs when the frequency bins is not small enough to cover all the present frequencies.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{guitar_time.png}
+	\caption{Guitar sample in time domain.}
+	\label{fig:guitar_time}
+\end{figure}
+
+
+
+With such small changes in frequency a more scattered frequency spectrum ought to be expected, which is also the case as shown in \cref{fig:guitar_freq}. The scattering occurs when the frequency bins is not small enough to cover all the present frequencies.
    
-\fxnote{indsæt billede af tidsdomæne guitar}
-\fxnote{indsæt billede af frekvensdomæne}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{guitar_freq.png}
+	\caption{Guitar sample in frequency domain.}
+	\label{fig:guitar_freq}
+\end{figure}
 
 
 
