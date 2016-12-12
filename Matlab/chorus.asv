@@ -12,13 +12,11 @@ clc
  [x,Fs] = audioread('181425__serylis__guitar-chord.wav'); 
   
  x = x(1:240894);
- 
- soundsc(x,Fs);
 %% parameters to vary the effect %
 % 3ms max delay in seconds
 max_time_delay=0.003;
 %rate of flange in Hz
-rate=1;                         
+rate=2;                         
 %create index array
 index=1:length(x);
 
@@ -78,7 +76,7 @@ f = Fs*(0:(L-1))/L;
 y_FFt = fft(y);
 L = length(y);
 
-y_FFt_real = abs(y_FFt)';
+y_FFt_real = abs(y_FFt);
 
 y_FFt_real_chan_1 = y_FFt_real(1,:);
 
@@ -87,11 +85,11 @@ y_FFt_real_chan_1_norm = normr(y_FFt_real_chan_1);
 
 
 figure (6)
-semilogx(f,y_FFt_real_chan_1_norm, 'r')
+semilogx(f,y_FFt_real_chan_1_norm + 80, 'r')
 hold on
-semilogx(f,x_FFt_real_chan_1_norm, 'b')
+semilogx(f,x_FFt_real_chan_1_norm + 80, 'b')
 hold off
-legend('Chorus', 'No Chorus')
+legend('Delay', 'No delay')
 title('Amplitude Spectrum')
 xlim([10 20000])
 ylabel('Amplitude [dB]')

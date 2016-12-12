@@ -3,7 +3,7 @@
 \subsection{Analysis of the filter}
 
 \subsubsection{Stability}
-A linear, time-invariant, digital filter can be expressed by a generic transfer function in the Z-domain. As shown in expression \cref{eqn:transfer} the FIR filter is simply a special case with a denominator of value one. In practise this means that FIR filter is inherently stable thus the denominator does not contain any poles.
+A linear, time-invariant, digital filter can be expressed by a generic transfer function in the Z-domain. As shown in expression \cref{eqn:transfer} the FIR filter is simply a special case with a denominator of value one. In practise this means that FIR filter is inherently stable as the denominator does not contain any poles.
 
 \begin{align}
 H(z)=\frac{b_0+b_1z^{-1}+b_2^{-2}+...b_Nz^{-N}}{1+a_1z^{-1}+a_2^{-2}+...a_Nz^{-M}} \xrightarrow[]{FIR}  \frac{b_0+b_1z^{-1}+b_2^{-2}+...b_Nz^{-N}}{1}
