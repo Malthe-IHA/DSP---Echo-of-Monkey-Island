@@ -46,9 +46,22 @@ The biggest issue with this method is the need to work on blocks of signal at a 
   
 %\fxnote{The following is WRONG}
 
-An alternative to the frequency domain method mentioned above, is modulating the input signal as visualize in \cref{fig:chorus}. The figure shows two delay blocks with a length of $z^{-d}$ samples. At every sample time the newest input sample is fed to the left-hand side of the block, while the oldest sample is outputted at the right-hand side. This action defines the delay which is the same as described in the "echo" section above. The difference between the echo and chorus effect lies in the length of delay. Furthermore the chorus effect utilizes a varying delay.
+An alternative to the frequency domain method mentioned above, is modulating the input signal as visualized in \cref{fig:chorus}. The figure shows two delay blocks with a length of $z^{-d}$ samples. At every sample time the newest input sample is fed to the left-hand side of the block, while the oldest sample is outputted at the right-hand side. This action defines the delay which is the same as described in the "echo" section above. The difference between the echo and chorus effect lies in the length of delay. Furthermore the chorus effect utilizes a varying delay.
 
-To accomplish         
+To generate the time-varying delay a low frequncy oscillator (LFO) is used. The goal here is to avoid a smooth delay which would just be perceive as an echo. This can be done by defining a integer which holds the maximum sample length we can delay with. In our case, see \cref{lst:chorus}, we choose a maximun delay of \SI{30}{ms}, whereby the maximum sample length delay can be calculated as:
+
+\begin{align}
+D_{sample} = D_{time} \cdot fs
+\end{align}
+
+
+ $D_{sample}$ is then modulated with a LFO y[n], oscillating as a function of discrete time with a maximal range of $D_{sample}$.
+ 
+ \begin{align}
+ D_{varying} = D_{sample} \cdot y[n]
+ \end{align}
+ 
+  The varying delay time caused by a low-frequency oscillator (LFO) helps to achieve a shimmering, spacious effect due to a combination of beat frequencies and the slight pitch-bending that occurs as the delay time is changed.          
 %, is to utilize %the human perception of hearing. Instead of doing the transformation to frequency space, we employ a number of delay lines in the form of digital filters, quite similar in design and effect as the echo filters we described earlier.
 
 %This time, we utilize that the mixing effect of two sines. If we have two pure sine signals and play them on top of each other, we would get the following:
